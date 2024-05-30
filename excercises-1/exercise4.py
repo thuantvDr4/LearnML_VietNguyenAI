@@ -1,29 +1,37 @@
 # Ex4: print all Possible Combinations from the three Digits
+import itertools
+
 data4 = [1, 2, 3]
 
 
-def find_permutation_items(data: list):
-    if len(data) == 0:
-        return []
-    if len(data) == 1:
-        return data
-    #
-    items_to_return = []
-    for i in range(len(data)):
-        current_item = data[i]
-        remaining_items = data[:i] + data[i + 1:]
-        print('---current', current_item)
-        print('---remaining', remaining_items)
+# dung de quy va hoan vi
+def generate_permutations(numbers, index, permutations):
+    if index == len(numbers) - 1:
+        permutations.append(numbers.copy())
+    else:
+        for i in range(index, len(numbers)):
+            numbers[index], numbers[i] = numbers[i], numbers[index]
+            generate_permutations(numbers, index + 1, permutations)
+            numbers[index], numbers[i] = numbers[i], numbers[index]
 
-        for item in find_permutation_items(remaining_items):
-            print(f'----item={i}', item)
-
-            my_items = [current_item] + [item]
-            print(f'----my_items={i}', my_items)
-            items_to_return.append(my_items)
-            print('----end-loop', items_to_return)
-    return items_to_return
+def print_permutations(numbers):
+    permutations = []
+    generate_permutations(numbers, 0, permutations)
+    return permutations
 
 
-my_result = find_permutation_items([1, 2, 3])
-print('----result', my_result)
+# cach 2 dung itertools
+def generate_permutation_numbers(numbers:list):
+    result_to_return = []
+    generated_items = itertools.permutations(numbers)
+    for item in generated_items:
+        result_to_return.append(item)
+    return result_to_return
+
+
+
+my_result = print_permutations([1,2,3])
+print('----result-1 ', my_result)
+
+my_result_2 = generate_permutation_numbers([1,2,3])
+print('-----result-2', my_result_2)
