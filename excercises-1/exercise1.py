@@ -13,3 +13,15 @@ for item in data1:
 
 print('---positive numbers:', len(positive_items))
 print('---negative numbers:',len(negative_items))
+
+
+def find_positive_and_negative_numbers(numbers:list):
+    positive_numbers = [numb for numb in numbers if numb > 0]
+    negative_numbers = [numb for numb in numbers if numb < 0]
+    return positive_numbers, negative_numbers
+
+
+(positive_numbs, negative_numbs) = find_positive_and_negative_numbers(data1)
+
+print('---cách 2-----Positive numbers:', len(positive_numbs))
+print('-----cách 2---Negative numbers:', len(negative_numbs))

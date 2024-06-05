@@ -1,3 +1,5 @@
+import numpy as np
+
 # Ex5: Given two matrices (2 nested lists), the task is to write a Python program
 # to add elements to each row from initial matrix.
 # For example: Input : test_list1 = [[4, 3, 5,], [1, 2, 3], [3, 7, 4]], test_list2 = [[1], [9], [8]]
@@ -21,3 +23,12 @@ def combine_list(list1:list, list2:list):
 
 my_result = combine_list(data5_list1, data5_list2)
 print('-------my-result:', my_result)
+
+def combine_list_new(data1:list, data2:list):
+    data_to_return = [ data1[i] + data2[i] for i in range(len(data1))]
+    return data_to_return
+
+my_result2 = combine_list_new(data5_list1, data5_list2)
+print('-------my-result 2:', my_result2)
+
+
